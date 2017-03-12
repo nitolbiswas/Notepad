@@ -193,6 +193,7 @@
             this.MainRichTextBox.Size = new System.Drawing.Size(381, 367);
             this.MainRichTextBox.TabIndex = 1;
             this.MainRichTextBox.Text = "";
+            this.MainRichTextBox.TextChanged += new System.EventHandler(this.MainRichTextBox_TextChanged);
             // 
             // Notepad
             // 
@@ -204,6 +205,7 @@
             this.Name = "Notepad";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Notepad";
+            this.Load += new System.EventHandler(this.Notepad_Load);
             this.MainMenuStrip.ResumeLayout(false);
             this.MainMenuStrip.PerformLayout();
             this.ResumeLayout(false);
