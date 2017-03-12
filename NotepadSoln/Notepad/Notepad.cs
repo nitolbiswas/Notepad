@@ -27,7 +27,25 @@ namespace Notepad
         }
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MainRichTextBox.Clear();
+            if(isFileDirty)
+            {
+                DialogResult result = MessageBox.Show("Do You want to Save this file?","File Save",
+                    MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+                switch (result)
+                {
+                    case DialogResult.Yes:
+                        SaveFileMenu();
+                        ClearScreen();
+                        break;
+                    case DialogResult.No:
+                        ClearScreen();
+                        break;
+                }
+            }
+            else
+            {
+                ClearScreen();
+            }
         }
         private void exitApllicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -90,7 +108,12 @@ namespace Notepad
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(isFileAlreadySave)
+            SaveFileMenu();
+        }
+
+        private void SaveFileMenu()
+        {
+            if (isFileAlreadySave)
             {
                 if (Path.GetExtension(CurrOpenFile) == ".txt")
                     MainRichTextBox.SaveFile(CurrOpenFile, RichTextBoxStreamType.PlainText);
@@ -100,16 +123,22 @@ namespace Notepad
             }
             else
             {
-                if(isFileDirty)
+                if (isFileDirty)
                 {
                     SaveAs();
                 }
                 else
                 {
-                    MainRichTextBox.Clear();
-                    this.Text = "Untitle - Notepad";
+                    ClearScreen();
                 }
             }
+        }
+
+        private void ClearScreen()
+        {
+            MainRichTextBox.Clear();
+            this.Text = "Untitle - Notepad";
+            isFileDirty = false;
         }
     }
 }
