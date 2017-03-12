@@ -13,6 +13,9 @@ namespace Notepad
 {
     public partial class Notepad : Form
     {
+        private bool isFileAlreadySave;
+        private bool isFileDirty;
+        private string CurrOpenFile;
         public Notepad()
         {
             InitializeComponent();
@@ -47,8 +50,30 @@ namespace Notepad
                     MainRichTextBox.LoadFile(openFileDialog.FileName, RichTextBoxStreamType.PlainText);
                 if(Path.GetExtension(openFileDialog.FileName) == ".rtf")
                     MainRichTextBox.LoadFile(openFileDialog.FileName, RichTextBoxStreamType.PlainText);
+                this.Text = Path.GetFileName(openFileDialog.FileName) + " - Notepad";
             }
-            this.Text = Path.GetFileName(openFileDialog.FileName)  + " - Notepad";
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Text Files (*.txt)|*.txt|Rich Text Format (*.rtf)|*.rtf";
+
+            DialogResult result = saveFileDialog.ShowDialog();
+            if(result == DialogResult.OK)
+            {
+                if (Path.GetExtension(saveFileDialog.FileName) == ".txt")
+                    MainRichTextBox.SaveFile(saveFileDialog.FileName, RichTextBoxStreamType.PlainText);
+                if (Path.GetExtension(saveFileDialog.FileName) == ".rtf")
+                    MainRichTextBox.SaveFile(saveFileDialog.FileName, RichTextBoxStreamType.PlainText);
+
+                this.Text = Path.GetFileName(saveFileDialog.FileName) + " - Notepad";
+            }
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
