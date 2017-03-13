@@ -104,6 +104,7 @@ namespace Notepad
         private void MainRichTextBox_TextChanged(object sender, EventArgs e)
         {
             isFileDirty = true;
+            undoToolStripMenuItem.Enabled = true;
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -139,6 +140,19 @@ namespace Notepad
             MainRichTextBox.Clear();
             this.Text = "Untitle - Notepad";
             isFileDirty = false;
+        }
+
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainRichTextBox.Undo();
+            redoToolStripMenuItem.Enabled = true;
+        }
+
+        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainRichTextBox.Redo();
+            redoToolStripMenuItem.Enabled = false;
+            undoToolStripMenuItem.Enabled = true;
         }
     }
 }
