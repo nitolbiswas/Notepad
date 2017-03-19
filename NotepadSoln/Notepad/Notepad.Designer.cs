@@ -45,6 +45,14 @@
             this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
             this.selectAllToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.dateTimeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.formatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.formatFontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeTextColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.italicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.underlineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.strickThrowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutNotepadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainRichTextBox = new System.Windows.Forms.RichTextBox();
@@ -56,6 +64,7 @@
             this.MainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
+            this.formatToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MainMenuStrip.Name = "MainMenuStrip";
@@ -143,7 +152,8 @@
             this.undoToolStripMenuItem,
             this.redoToolStripMenuItem,
             this.selectAllToolStripMenuItem,
-            this.selectAllToolStripMenuItem1});
+            this.selectAllToolStripMenuItem1,
+            this.dateTimeToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "&Edit";
@@ -152,7 +162,7 @@
             // 
             this.undoToolStripMenuItem.Enabled = false;
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.undoToolStripMenuItem.Text = "&Undo";
             this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
@@ -160,20 +170,82 @@
             // 
             this.redoToolStripMenuItem.Enabled = false;
             this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.redoToolStripMenuItem.Text = "&Redo";
             this.redoToolStripMenuItem.Click += new System.EventHandler(this.redoToolStripMenuItem_Click);
             // 
             // selectAllToolStripMenuItem
             // 
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(149, 6);
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(127, 6);
             // 
             // selectAllToolStripMenuItem1
             // 
             this.selectAllToolStripMenuItem1.Name = "selectAllToolStripMenuItem1";
-            this.selectAllToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.selectAllToolStripMenuItem1.Size = new System.Drawing.Size(130, 22);
             this.selectAllToolStripMenuItem1.Text = "&Select All";
+            this.selectAllToolStripMenuItem1.Click += new System.EventHandler(this.selectAllToolStripMenuItem1_Click);
+            // 
+            // dateTimeToolStripMenuItem
+            // 
+            this.dateTimeToolStripMenuItem.Name = "dateTimeToolStripMenuItem";
+            this.dateTimeToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.dateTimeToolStripMenuItem.Text = "Date/Time";
+            this.dateTimeToolStripMenuItem.Click += new System.EventHandler(this.dateTimeToolStripMenuItem_Click);
+            // 
+            // formatToolStripMenuItem
+            // 
+            this.formatToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.formatFontToolStripMenuItem,
+            this.changeTextColorToolStripMenuItem,
+            this.toolStripMenuItem4,
+            this.italicToolStripMenuItem,
+            this.underlineToolStripMenuItem,
+            this.strickThrowToolStripMenuItem});
+            this.formatToolStripMenuItem.Name = "formatToolStripMenuItem";
+            this.formatToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.formatToolStripMenuItem.Text = "Format";
+            // 
+            // formatFontToolStripMenuItem
+            // 
+            this.formatFontToolStripMenuItem.Name = "formatFontToolStripMenuItem";
+            this.formatFontToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.formatFontToolStripMenuItem.Text = "&Format Font";
+            this.formatFontToolStripMenuItem.Click += new System.EventHandler(this.formatFontToolStripMenuItem_Click);
+            // 
+            // changeTextColorToolStripMenuItem
+            // 
+            this.changeTextColorToolStripMenuItem.Name = "changeTextColorToolStripMenuItem";
+            this.changeTextColorToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.changeTextColorToolStripMenuItem.Text = "&Change Text Color";
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(171, 22);
+            this.toolStripMenuItem4.Text = "&Bold";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+            // 
+            // italicToolStripMenuItem
+            // 
+            this.italicToolStripMenuItem.Name = "italicToolStripMenuItem";
+            this.italicToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.italicToolStripMenuItem.Text = "&Italic";
+            this.italicToolStripMenuItem.Click += new System.EventHandler(this.italicToolStripMenuItem_Click);
+            // 
+            // underlineToolStripMenuItem
+            // 
+            this.underlineToolStripMenuItem.Name = "underlineToolStripMenuItem";
+            this.underlineToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.underlineToolStripMenuItem.Text = "&Underline";
+            this.underlineToolStripMenuItem.Click += new System.EventHandler(this.underlineToolStripMenuItem_Click);
+            // 
+            // strickThrowToolStripMenuItem
+            // 
+            this.strickThrowToolStripMenuItem.Name = "strickThrowToolStripMenuItem";
+            this.strickThrowToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.strickThrowToolStripMenuItem.Text = "&strickThrow";
+            this.strickThrowToolStripMenuItem.Click += new System.EventHandler(this.strickThrowToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -241,6 +313,14 @@
         private System.Windows.Forms.ToolStripSeparator selectAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem1;
         private System.Windows.Forms.RichTextBox MainRichTextBox;
+        private System.Windows.Forms.ToolStripMenuItem dateTimeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem formatToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem formatFontToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeTextColorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem italicToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem underlineToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem strickThrowToolStripMenuItem;
     }
 }
 

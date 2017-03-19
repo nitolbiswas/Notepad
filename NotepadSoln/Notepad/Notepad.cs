@@ -27,9 +27,9 @@ namespace Notepad
         }
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(isFileDirty)
+            if (isFileDirty)
             {
-                DialogResult result = MessageBox.Show("Do You want to Save this file?","File Save",
+                DialogResult result = MessageBox.Show("Do You want to Save this file?", "File Save",
                     MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
                 switch (result)
                 {
@@ -46,7 +46,16 @@ namespace Notepad
             {
                 ClearScreen();
             }
+
+            UndoRedoOnOf(false);
         }
+
+        private void UndoRedoOnOf(bool enable)
+        {
+            undoToolStripMenuItem.Enabled = enable;
+            redoToolStripMenuItem.Enabled = enable;
+        }
+
         private void exitApllicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -70,6 +79,7 @@ namespace Notepad
                 isFileDirty = false;
                 CurrOpenFile = openFileDialog.FileName;
             }
+            UndoRedoOnOf(false);
         }
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -153,6 +163,54 @@ namespace Notepad
             MainRichTextBox.Redo();
             redoToolStripMenuItem.Enabled = false;
             undoToolStripMenuItem.Enabled = true;
+        }
+
+        private void selectAllToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MainRichTextBox.SelectAll();
+        }
+
+        private void dateTimeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainRichTextBox.SelectedText += DateTime.Now.ToString();
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            FormatText(FontStyle.Bold);
+        }
+
+        private void FormatText(FontStyle fontStyle)
+        {
+            MainRichTextBox.SelectionFont = new Font(MainRichTextBox.Font, fontStyle);
+        }
+
+        private void italicToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormatText(FontStyle.Italic);
+        }
+
+        private void underlineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormatText(FontStyle.Underline);
+        }
+
+        private void strickThrowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormatText(FontStyle.Strikeout);
+        }
+
+        private void formatFontToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FontDialog fontDialog = new FontDialog();
+            fontDialog.ShowColor = true;
+
+            DialogResult result = fontDialog.ShowDialog();
+            if(result == DialogResult.OK)
+            {
+                MainRichTextBox.SelectionFont = fontDialog.Font;
+                MainRichTextBox.SelectionColor = fontDialog.Color;
+            }
         }
     }
 }
